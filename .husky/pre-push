@@ -3,8 +3,6 @@
 
 echo "🚀 Running pre-push tasks..."
 
-
-
 echo "🔍 Running lint..."
 npm run lint
 if [ $? -ne 0 ]; then
@@ -14,7 +12,6 @@ fi
 
 echo "✅ Lint check passed!"
 
-
 echo "🔬 Running tests..."
 npm test
 if [ $? -ne 0 ]; then
@@ -23,7 +20,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "✅ All tests passed!"
-
 
 remote="$1"
 url="$2"
