@@ -1,26 +1,27 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Running Next.js lint on staged files..."
+echo "🔍 Running lint on staged files..."
 
-# Get only staged JavaScript/TypeScript files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|jsx|tsx)$' || true)
+# Get only staged files (Added, Copied, Modified)
+STAGED_FILES="$(git diff --cached --name-only --diff-filter=ACM)"
 
+echo "$STAGED_FILES"
+
+# If no staged files, skip
 if [ -z "$STAGED_FILES" ]; then
-  echo "✅ No JavaScript/TypeScript files to lint. Skipping lint check."
+  echo "No staged files found. Skipping lint."
   exit 0
 fi
 
+# Run your lint script, passing staged files as arguments
+npm run lint-file $STAGED_FILES
 
-# If linting fails, exit with error
+# If linting fails, exit with an error
 if [ $? -ne 0 ]; then
-  echo "❌ Fix linting errors before committing!"
+  echo "❌ Fix lint errors before committing!"
   exit 1
 fi
 
-# Ensure only modified files are staged again
-git update-index --refresh
-
 echo "✅ Lint check passed!"
 exit 0
-
