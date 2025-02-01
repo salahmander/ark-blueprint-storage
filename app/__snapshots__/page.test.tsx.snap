@@ -4,7 +4,7 @@ exports[`renders homepage unchanged 1`] = `
 <div>
   <div>
     <h1>
-      Home
+      Test
     </h1>
     <a
       href="/about"
