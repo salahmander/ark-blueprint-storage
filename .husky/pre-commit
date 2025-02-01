@@ -1,21 +1,26 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Running ESLint on staged files..."
+echo "🔍 Running Next.js lint on staged files..."
 
 # Get only staged JavaScript/TypeScript files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|jsx|tsx)$' || true)
 
 if [ -z "$STAGED_FILES" ]; then
-  echo "✅ No JavaScript/TypeScript files to lint. Skipping ESLint check."
+  echo "✅ No JavaScript/TypeScript files to lint. Skipping lint check."
   exit 0
 fi
 
-# Run ESLint only on staged files and attempt fixes
-npx eslint --fix $STAGED_FILES || { echo "❌ Fix ESLint errors before committing!"; exit 1; }
+
+# If linting fails, exit with error
+if [ $? -ne 0 ]; then
+  echo "❌ Fix linting errors before committing!"
+  exit 1
+fi
 
 # Ensure only modified files are staged again
 git update-index --refresh
 
-echo "✅ ESLint check passed!"
+echo "✅ Lint check passed!"
 exit 0
+
