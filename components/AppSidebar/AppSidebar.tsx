@@ -1,5 +1,8 @@
 import * as React from "react";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Sidebar,
   SidebarContent,
@@ -7,27 +10,48 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar {...props}>
-      <SidebarHeader></SidebarHeader>
+      <SidebarHeader>
+        <h1 className="text-lg font-semibold">ARK: Blueprint Filters</h1>
+      </SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
         <SidebarGroup>
-          <SidebarGroupLabel>Sidebar</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            <h2 className="text-lg font-semibold">Blueprint Filter</h2>
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem></SidebarMenuItem>
-            </SidebarMenu>
+            <form className="space-y-4">
+              <div>
+                <Label htmlFor="firstName">First Name</Label>
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter your first name"
+                />
+              </div>
+              <div>
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter your last name"
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                Submit
+              </Button>
+            </form>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
   );
-}
+};
+
+export default AppSidebar;

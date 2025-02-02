@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { BLUEPRINTS } from "@/data/data";
-import { AppSidebar } from "@/components/AppSidebar/AppSidebar";
+import AppSidebar from "@/components/AppSidebar/AppSidebar";
 
 const BlueprintSelection = () => {
   return (
