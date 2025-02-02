@@ -1,4 +1,5 @@
 import BlueprintCard from "@/components/BlueprintCard/BlueprintCard";
+import BlueprintEmptyPlaceholder from "@/components/BlueprintEmptyPlaceholder/BlueprintEmptyPlaceholder";
 import ScrollableGrid from "@/components/ScrollableGrid/ScrollableGrid";
 import { Separator } from "@/components/ui/separator";
 
@@ -48,13 +49,20 @@ const BlueprintSelection = () => {
                 </div>
               </div>
               <Separator className="my-4" />
-              <ScrollableGrid orientation="vertical">
-                <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 lg:grid-cols-4 gap-4 pb-4">
-                  {BLUEPRINTS.map((blueprint) => (
-                    <BlueprintCard key={blueprint.name} blueprint={blueprint} />
-                  ))}
-                </div>
-              </ScrollableGrid>
+              {BLUEPRINTS.length === 0 ? (
+                <BlueprintEmptyPlaceholder />
+              ) : (
+                <ScrollableGrid orientation="vertical">
+                  <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 lg:grid-cols-4 gap-4 pb-4">
+                    {BLUEPRINTS.map((blueprint) => (
+                      <BlueprintCard
+                        key={blueprint.name}
+                        blueprint={blueprint}
+                      />
+                    ))}
+                  </div>
+                </ScrollableGrid>
+              )}
             </div>
           </div>
         </div>
