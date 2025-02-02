@@ -22,12 +22,12 @@ const BlueprintSelection = () => {
         </header>
         <div className="h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-1 md:col-span-3 lg:col-span-5 lg:border-l">
-            <div className="h-full px-4 py-6 lg:px-8">
+            <div className="h-full px-4 py-2 lg:px-8">
               <div className="space-y-6">
                 <div className="space-between flex items-center">
                   <div className="hidden md:block lg:block ml-auto mr-4"></div>
                 </div>
-                <div className="mt-6 space-y-1">
+                <div className="mt-3 space-y-1">
                   <h2 className="text-2xl font-semibold tracking-tight">
                     Best Blueprints
                   </h2>
