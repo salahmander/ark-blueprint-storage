@@ -14,7 +14,7 @@ const eslintConfig = [
 
   // ⛔ Add ignore patterns
   {
-    ignores: ["node_modules/", "dist/", "build/", "coverage/", "public/", ".next/"],
+    ignores: ["node_modules/", "dist/", "build/", "coverage/", "public/", ".next/", "tailwind.config.ts"],
   },
 ];
 
