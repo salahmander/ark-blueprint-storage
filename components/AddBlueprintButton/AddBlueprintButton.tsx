@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -11,8 +13,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { useState } from "react";
+import AddBlueprintForm from "@/components/AddBlueprintForm/AddBlueprintForm";
 
 export const AddBlueprintButton = () => {
   const [open, setOpen] = useState(false);
@@ -32,6 +35,9 @@ export const AddBlueprintButton = () => {
             before submitting the blueprint.
           </DialogDescription>
         </DialogHeader>
+        <ScrollArea className="max-h-[65vh] overflow-y-auto p-2">
+          <AddBlueprintForm />
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );
