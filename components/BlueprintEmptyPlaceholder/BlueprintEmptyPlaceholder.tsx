@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { AddBlueprintButton } from "@/components/AddBlueprintButton/AddBlueprintButton";
 
 const BlueprintEmptyPlaceholder = () => {
   return (
@@ -24,7 +24,7 @@ const BlueprintEmptyPlaceholder = () => {
           <p className="mb-4 mt-2 text-sm text-muted-foreground">
             You have not added any blueprints. Add one below.
           </p>
-          <Button>Add Blueprint</Button>
+          <AddBlueprintButton />
         </div>
       </div>
     </div>
