@@ -43,7 +43,7 @@ const BlueprintSelection = () => {
                       <BlueprintCard
                         key={blueprint.name}
                         blueprint={blueprint}
-                        className="w-[250px]"
+                        className="w-[230px]"
                       />
                     ))}
                   </div>
@@ -66,7 +66,7 @@ const BlueprintSelection = () => {
                     <BlueprintEmptyPlaceholder />
                   ) : (
                     <ScrollableGrid orientation="vertical">
-                      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 lg:grid-cols-5 gap-4 pb-4">
+                      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 lg:grid-cols-4 gap-4 pb-4">
                         {BLUEPRINTS.map((blueprint) => (
                           <BlueprintCard
                             key={blueprint.name}
