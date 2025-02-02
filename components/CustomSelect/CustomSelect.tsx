@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 export type Option = {
   value: string;
@@ -40,7 +41,10 @@ const CustomSelect = ({
         name={name}
         required={required}
       >
-        <SelectTrigger id={name}>
+        <SelectTrigger
+          id={name}
+          className={cn(!value && "text-muted-foreground")}
+        >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
