@@ -1,7 +1,6 @@
-import * as React from "react";
+"use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Sidebar,
@@ -13,7 +12,28 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
+import MultiSelectCombobox from "@/components/MultiSelectComboBox/MultiSelectComboBox";
+
+import { CATEGORISED_SADDLES } from "@/lib/items/saddles";
+import { CATEGORISED_WEAPONS } from "@/lib/items/weapon";
+import { blueprintQualitiesAndColors } from "@/lib/blueprintQuality";
+
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
+  const qualityOptions = blueprintQualitiesAndColors.map((quality) => ({
+    value: quality.name,
+    label: quality.english_name,
+  }));
+
+  const saddleOptions = CATEGORISED_SADDLES.map((saddle) => ({
+    value: saddle.name,
+    label: saddle.english_name,
+  }));
+
+  const weaponOptions = CATEGORISED_WEAPONS.map((weapon) => ({
+    value: weapon.name,
+    label: weapon.english_name,
+  }));
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -22,24 +42,29 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>
-            <h2 className="text-lg font-semibold">Blueprint Filter</h2>
+            <h2 className="text-lg font-semibold mb-2">Blueprint Filter</h2>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <form className="space-y-4">
               <div>
-                <Label htmlFor="firstName">First Name</Label>
-                <Input
-                  id="firstName"
-                  name="firstName"
-                  placeholder="Enter your first name"
+                <Label htmlFor="Quality">Quality</Label>
+                <MultiSelectCombobox
+                  items={qualityOptions}
+                  placeholder="Search quality..."
                 />
               </div>
               <div>
-                <Label htmlFor="lastName">Last Name</Label>
-                <Input
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Enter your last name"
+                <Label htmlFor="Saddle">Saddles</Label>
+                <MultiSelectCombobox
+                  items={saddleOptions}
+                  placeholder="Search saddles..."
+                />
+              </div>
+              <div>
+                <Label htmlFor="Weapon">Weapons</Label>
+                <MultiSelectCombobox
+                  items={weaponOptions}
+                  placeholder="Search weapons..."
                 />
               </div>
               <Button type="submit" className="w-full">
