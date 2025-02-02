@@ -10,8 +10,8 @@ import type { Blueprint } from "@/types/index.types";
 
 type BlueprintCardProps = React.HTMLAttributes<HTMLDivElement> & {
   blueprint: Blueprint;
-  width: number;
-  height: number;
+  width?: number | `${number}`;
+  height?: number | `${number}`;
 };
 
 const BlueprintCard = ({
@@ -54,7 +54,7 @@ const BlueprintCard = ({
             <li key={index} className="flex">
               {resource.quantity.toLocaleString()}×
               <Image
-                src={resource?.icon}
+                src={resource.icon}
                 alt={resource.name}
                 className={"h-5 w-5 object-contain"}
                 height={20}

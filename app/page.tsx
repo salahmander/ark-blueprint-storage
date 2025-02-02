@@ -1,4 +1,8 @@
+import BlueprintCard from "@/components/BlueprintCard/BlueprintCard";
+import ScrollableGrid from "@/components/ScrollableGrid/ScrollableGrid";
 import { Separator } from "@/components/ui/separator";
+
+import { BLUEPRINTS } from "@/data/data";
 
 const BlueprintSelection = () => {
   return (
@@ -19,7 +23,17 @@ const BlueprintSelection = () => {
               </p>
             </div>
             <Separator className="my-4" />
-
+            <ScrollableGrid orientation="horizontal">
+              <div className="flex space-x-4 pb-4">
+                {BLUEPRINTS.map((blueprint) => (
+                  <BlueprintCard
+                    key={blueprint.name}
+                    blueprint={blueprint}
+                    className="w-[250px]"
+                  />
+                ))}
+              </div>
+            </ScrollableGrid>
             <div className="border-none p-0 outline-none">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
@@ -34,6 +48,13 @@ const BlueprintSelection = () => {
                 </div>
               </div>
               <Separator className="my-4" />
+              <ScrollableGrid orientation="vertical">
+                <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 lg:grid-cols-4 gap-4 pb-4">
+                  {BLUEPRINTS.map((blueprint) => (
+                    <BlueprintCard key={blueprint.name} blueprint={blueprint} />
+                  ))}
+                </div>
+              </ScrollableGrid>
             </div>
           </div>
         </div>
@@ -42,4 +63,4 @@ const BlueprintSelection = () => {
   );
 };
 
-export default BlueprintSelection
+export default BlueprintSelection;
