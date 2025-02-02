@@ -68,7 +68,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                 />
               </div>
               <Button type="submit" className="w-full">
-                Submit
+                Search
               </Button>
             </form>
           </SidebarGroupContent>
