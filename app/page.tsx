@@ -10,6 +10,7 @@ import {
 
 import { BLUEPRINTS } from "@/data/data";
 import AppSidebar from "@/components/AppSidebar/AppSidebar";
+import { AddBlueprintButton } from "@/components/AddBlueprintButton/AddBlueprintButton";
 
 const BlueprintSelection = () => {
   return (
@@ -19,6 +20,9 @@ const BlueprintSelection = () => {
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
+          <div className="ml-auto">
+            <AddBlueprintButton />
+          </div>
         </header>
         <div className="h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-1 md:col-span-3 lg:col-span-5 lg:border-l">
