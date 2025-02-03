@@ -4,6 +4,7 @@ export const SADDLE = Object.freeze({
   TAPEJARA_TEK_SADDLE: "Tapejara Tek Saddle",
   ROCK_DRAKE_TEK_SADDLE: "Rock Drake Tek Saddle",
   REX_TEK_SADDLE: "Rex Tek Saddle",
+  CARCHARODONTOSAURUS_SADDLE : "Carcharodontosaurus Saddle",
   WOOLLY_RHINO_SADDLE: "Woolly Rhino Saddle",
   YUTYRANNUS_SADDLE: "Yutyrannus Saddle",
   SABERTOOTH_SADDLE: "Sabertooth Saddle",
@@ -241,6 +242,11 @@ export const CATEGORISED_SADDLES = Object.freeze([
     name: SADDLE.QUETZ_PLATFORM_SADDLE,
     category: ITEM_CATEGORY.SADDLE,
     english_name: "Quetz Platform Saddle",
+  },
+  {
+    name: SADDLE.CARCHARODONTOSAURUS_SADDLE,
+    category: ITEM_CATEGORY.SADDLE,
+    english_name: "Carcharodontosaurus Saddle"
   },
   {
     name: SADDLE.QUETZ_SADDLE,
