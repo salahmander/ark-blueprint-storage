@@ -13,7 +13,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 import AddBlueprintForm from "@/components/AddBlueprintForm/AddBlueprintForm";
 
@@ -35,9 +34,7 @@ export const AddBlueprintButton = () => {
             before submitting the blueprint.
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className="max-h-[65vh] overflow-y-auto p-2">
-          <AddBlueprintForm />
-        </ScrollArea>
+        <AddBlueprintForm />
       </DialogContent>
     </Dialog>
   );
