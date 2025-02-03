@@ -27,7 +27,7 @@ export type ComboboxOption = {
 
 type CustomComboboxProps = {
   options: ComboboxOption[];
-  label: string;
+  label?: string;
   placeholder?: string;
   onChange: (value: string) => void;
   value?: string;
@@ -48,7 +48,7 @@ const CustomCombobox = ({
 
   return (
     <div className="space-y-2">
-      <Label htmlFor={name}>{label}</Label>
+      {label && <Label htmlFor={name}>{label}</Label>}
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -68,7 +68,7 @@ const CustomCombobox = ({
         </PopoverTrigger>
         <PopoverContent className="w-full p-0">
           <Command>
-            <CommandInput placeholder={`Search ${label.toLowerCase()}...`} />
+            <CommandInput placeholder={"Search..."} />
             <CommandList>
               <CommandEmpty>No option found.</CommandEmpty>
               <CommandGroup>
