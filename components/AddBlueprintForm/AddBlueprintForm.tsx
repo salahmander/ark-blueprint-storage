@@ -72,7 +72,7 @@ const AddBlueprintForm = () => {
       )
     );
   };
-  console.log({ resources });
+  
   return (
     <form className="space-y-6">
       <CustomSelect
