@@ -38,7 +38,7 @@ const BlueprintsSchema = new Schema(
         },
       },
     ],
-    featured: {
+    is_featured: {
       type: Boolean,
       default: false,
     },
