@@ -39,6 +39,7 @@ const DynamicCombobox = ({
           onChange={(e) => onUpdate("quantity", e.target.value)}
           placeholder="Quantity"
           className="w-[110px] pl-8"
+          required={true}
         />
         <Scale className="h-4 w-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
