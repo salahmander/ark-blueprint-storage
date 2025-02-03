@@ -5,15 +5,10 @@ import Blueprints from "@/models/Blueprints";
 import { revalidatePath } from "next/cache";
 
 const addBlueprint = async (formData: FormData) => {
-  const resourcesString = formData.get("resources") as string;
-  const resources = JSON.parse(resourcesString).map(
-    (resource: Record<string, string>) => ({
-      name: resource.name,
-      quantity: resource.quantity,
-    })
-  );
-
   await connectDB();
+
+  const resourcesString = formData.get("resources") as string;
+  const resources = JSON.parse(resourcesString);
 
   const blueprintData = {
     name: formData.get("name"),

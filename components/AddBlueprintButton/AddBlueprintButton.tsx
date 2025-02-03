@@ -34,7 +34,7 @@ export const AddBlueprintButton = () => {
             before submitting the blueprint.
           </DialogDescription>
         </DialogHeader>
-        <AddBlueprintForm />
+        <AddBlueprintForm onSubmitSuccess={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   );

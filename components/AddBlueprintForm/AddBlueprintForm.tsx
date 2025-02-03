@@ -18,8 +18,13 @@ import { blueprintQualitiesAndColors } from "@/lib/blueprintQuality";
 import { PlusCircle } from "lucide-react";
 import { CATEGORISED_RESOURCES } from "@/lib/items/resource";
 import { ScrollArea } from "../ui/scroll-area";
+import addBlueprint from "@/app/actions/addBlueprint/addBlueprint";
 
-const AddBlueprintForm = () => {
+type AddBlueprintFormProps = {
+  onSubmitSuccess: () => void;
+};
+
+const AddBlueprintForm = ({ onSubmitSuccess }: AddBlueprintFormProps) => {
   const [selectedQuality, setSelectedQuality] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectWeapon, setSelectWeapon] = useState<string>("");
@@ -58,7 +63,9 @@ const AddBlueprintForm = () => {
   };
 
   const removeResource = (id: number) => {
-    setResources(resources.filter((resource) => resource.id !== id));
+    if (resources.length > 1) {
+      setResources(resources.filter((resource) => resource.id !== id));
+    }
   };
 
   const updateResource = (
@@ -72,9 +79,21 @@ const AddBlueprintForm = () => {
       )
     );
   };
-  
+
+  const handleSubmit = (formData: FormData) => {
+    const selectedResources = resources.map((resource) => ({
+      name: resource.name,
+      quantity: resource.quantity,
+    }));
+
+    formData.set("resources", JSON.stringify(selectedResources));
+
+    addBlueprint(formData);
+    onSubmitSuccess();
+  };
+
   return (
-    <form className="space-y-6">
+    <form action={handleSubmit} className="space-y-6">
       <CustomSelect
         options={categoryOptions}
         label="Category"
@@ -100,7 +119,7 @@ const AddBlueprintForm = () => {
           placeholder="Select Weapon"
           onChange={setSelectWeapon}
           value={selectWeapon}
-          name="weapon"
+          name="name"
           required
         />
       )}
@@ -111,22 +130,40 @@ const AddBlueprintForm = () => {
           placeholder="Select Saddle"
           onChange={setSelectSaddle}
           value={selectSaddle}
-          name="saddle"
+          name="name"
           required
         />
       )}
       <div className="flex gap-4">
         <div>
           <Label htmlFor="damage">Damage</Label>
-          <Input id="damage" name="damage" type="number" step={0.01} />
+          <Input
+            id="damage"
+            name="damage"
+            type="number"
+            step={0.01}
+            defaultValue={0}
+          />
         </div>
         <div>
           <Label htmlFor="durability">Durability</Label>
-          <Input id="durability" name="durability" type="number" step={0.01} />
+          <Input
+            id="durability"
+            name="durability"
+            type="number"
+            step={0.01}
+            defaultValue={0}
+          />
         </div>
         <div>
           <Label htmlFor="armor">Armor</Label>
-          <Input id="armor" name="armor" type="number" step={0.01} />
+          <Input
+            id="armor"
+            name="armor"
+            type="number"
+            step={0.01}
+            defaultValue={0}
+          />
         </div>
       </div>
       <div className="space-y-4"></div>
@@ -162,7 +199,7 @@ const AddBlueprintForm = () => {
 
       <div className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
         <div className="items-top flex space-x-2">
-          <Checkbox id="featured" />
+          <Checkbox name="featured" id="featured" />
           <div className="grid gap-1.5 leading-none">
             <label
               htmlFor="featured"
