@@ -15,7 +15,7 @@ export type Option = {
 
 type CustomSelectProps = {
   options: Option[];
-  label: string;
+  label?: string;
   placeholder?: string;
   onChange: (value: string) => void;
   value?: string;
@@ -34,12 +34,12 @@ const CustomSelect = ({
 }: CustomSelectProps) => {
   return (
     <div className="space-y-2">
-      <Label htmlFor={name}>{label}</Label>
+      {label && <Label htmlFor={name}>{label}</Label>}
       <Select
         onValueChange={onChange}
-        value={value}
-        name={name}
+        value={value || undefined}
         required={required}
+        name={name}
       >
         <SelectTrigger
           id={name}
